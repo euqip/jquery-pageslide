@@ -198,5 +198,12 @@
 	        $.pageslide.close();
 	    }
 	});
-	
+	$(window).bind('resize', function(e) {
+	        // Make sure it's visible, and we're not modal, 
+	        // to avoid presence of slide and wide content when using as sliding menu      
+	        if( $pageslide.is( ':visible' ) && !$pageslide.data( 'modal' ) ) {          
+	            $.pageslide.close();
+        }
+    });
+
 })(jQuery);
