@@ -122,8 +122,9 @@
         direction:  'right',    // Accepts 'left' or 'right'
         modal:      false,      // If set to true, you must explicitly close pageslide using $.pageslide.close();
         iframe:     true,       // By default, linked pages are loaded into an iframe. Set this to false if you don't want an iframe.
-        href:       null        // Override the source of the content. Optional in most cases, but required when opening pageslide programmatically.
-    };
+        href:       null,       // Override the source of the content. Optional in most cases, but required when opening pageslide programmatically.
+        onresize:   false       // close pageslide on window resize when true, to be used for alternate menu and media query
+   };
 	
 	/*
      * Public methods 
@@ -198,12 +199,12 @@
 	        $.pageslide.close();
 	    }
 	});
+	
 	$(window).bind('resize', function(e) {
-	        // Make sure it's visible, and we're not modal, 
-	        // to avoid presence of slide and wide content when using as sliding menu      
-	        if( $pageslide.is( ':visible' ) && !$pageslide.data( 'modal' ) ) {          
-	            $.pageslide.close();
-        }
-    });
+	// Make sure it's visible, and we're not modal, unchanged behavior with defaut settings     
+	   if($pageslide.data( 'onresize' ) && !$pageslide.data( 'modal' )) {          
+		$.pageslide.close();
+	   }
+    	});
 
 })(jQuery);
