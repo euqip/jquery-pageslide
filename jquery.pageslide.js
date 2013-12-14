@@ -202,7 +202,7 @@
 	
 	$(window).bind('resize', function(e) {
 	// Make sure it's visible, and we're not modal, unchanged behavior with defaut settings     
-	   if($pageslide.data( 'onresize' ) && !$pageslide.data( 'modal' )) {          
+	   if( $pageslide.is( ':visible' ) && $pageslide.data( 'onresize' ) && !$pageslide.data( 'modal' )) {          
 		$.pageslide.close();
 	   }
     	});
